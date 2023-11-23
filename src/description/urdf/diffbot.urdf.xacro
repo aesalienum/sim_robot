@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diffdrive_robot">
+
+    <xacro:arg name="prefix" default="" />
+
+    <!-- Import Rviz colors -->
+    <xacro:include filename="$(find description)/config/materials.xacro" />
+    <!-- Import diffbot description -->
+    <xacro:include filename="$(find description)/urdf/diffbot_description.urdf.xacro" />
+
+    <xacro:diffbot prefix="$(arg prefix)" />
+
+</robot>
