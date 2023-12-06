@@ -1,6 +1,6 @@
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
-from launch.conditions import IfCondition
+from launch.conditions import IfCondition, UnlessCondition
 from launch.substitutions import (
     Command,
     FindExecutable,
@@ -78,6 +78,11 @@ def generate_launch_description():
     )
 
     joint_state_publisher_node = Node(
+        package="joint_state_publisher",
+        executable="joint_state_publisher",
+        condition=UnlessCondition(gui),
+    )
+    joint_state_publisher_node_gui = Node(
         package="joint_state_publisher_gui",
         executable="joint_state_publisher_gui",
         condition=IfCondition(gui),
@@ -94,11 +99,12 @@ def generate_launch_description():
         name="rviz2",
         output="log",
         arguments=["-d", rviz_config_file],
-        condition=IfCondition(gui),
+        # condition=IfCondition(gui),
     )
 
     nodes = [
         joint_state_publisher_node,
+        joint_state_publisher_node_gui,
         robot_state_publisher_node,
         rviz_node,
     ]

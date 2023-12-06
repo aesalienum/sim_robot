@@ -1,0 +1,12 @@
+hardware_node:
+  ros__parameter:
+    # diffbot
+    joint_name_left_wheel: left_wheel_joint
+    joint_name_right_wheel: right_wheel_joint
+    wheel_radius: 0.07
+    distance_to_left_wheel: 0.173205
+    distance_to_right_wheel: 0.173205
+
+    # common
+    topic_cmd_vel: cmd_vel
+    topic_name_joint_states: joint_states
